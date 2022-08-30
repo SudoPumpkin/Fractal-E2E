@@ -1,3 +1,5 @@
+import { delay } from "../e2e/helpers.spec";
+
 const { test: base, chromium, webkit } = require('@playwright/test')
 const path = require('path')
 
@@ -30,10 +32,11 @@ const test = base.extend({
 test.describe('Popup', () => {
     test('our extension loads', async ({ page }) => {
       //await page.pause(); //this is here to stop the test to confirm local extensions are present with the correct browser 
+      //await page.delay(4000);
       await page.goto(
-        'chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/welcome',
+        'chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#unlock',
       )
-      //await page.reload();
+      await page.reload();
       await page.waitForTimeout(30000); // this is here so that it won't automatically close the browser window
 
     })
