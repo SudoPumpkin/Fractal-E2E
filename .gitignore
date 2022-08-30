@@ -1,7 +1,7 @@
 node_modules/
 /test-results/*
-/playwright-report/*
 /playwright/.cache/
+/playwright-report/*
 /tests-examples
 /10.14.6_0
 /.vscode 
