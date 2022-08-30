@@ -1,0 +1,10 @@
+node_modules/
+/test-results/*
+/playwright-report/*
+/playwright/.cache/
+/tests-examples
+/10.14.6_0
+/.vscode 
+/*.png
+/html/*
+.DS_Store
