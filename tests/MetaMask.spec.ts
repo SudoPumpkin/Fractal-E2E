@@ -34,7 +34,7 @@ test.describe('Popup', () => {
       //await page.pause(); //this is here to stop the test to confirm local extensions are present with the correct browser 
       //await page.delay(4000);
       await page.goto(
-        'chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#unlock',
+        'https://google.com',
       )
       await page.reload();
       await page.waitForTimeout(30000); // this is here so that it won't automatically close the browser window
