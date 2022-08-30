@@ -33,7 +33,7 @@ test.describe('Popup', () => {
       await page.goto(
         'chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/welcome',
       )
-      await page.reload();
+      //await page.reload();
       await page.waitForTimeout(30000); // this is here so that it won't automatically close the browser window
 
     })
