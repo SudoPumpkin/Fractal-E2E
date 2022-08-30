@@ -1,7 +1,7 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import { join } from 'path';
-import { ChromeExtensionOptions } from './tests/fixtures/chrome-extension';
+// import { ChromeExtensionOptions } from './tests-examples/chrome-extension';
 
 /**
  * Read environment variables from file.
