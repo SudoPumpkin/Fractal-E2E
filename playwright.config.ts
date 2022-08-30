@@ -12,7 +12,7 @@ import { join } from 'path';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig<ChromeExtensionOptions> = {
+const config: PlaywrightTestConfig = {
   testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 0,
@@ -76,10 +76,9 @@ const config: PlaywrightTestConfig<ChromeExtensionOptions> = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        chromeExtensions: {
-          paths: [join(__dirname, '../person 1/10.14.6_0')],
+        // chromeExtensions: {
+        //   paths: [join(__dirname, '../person 1/10.14.6_0')],
       },
-    },
     },
     {
 			name: 'ChromeLocal',
