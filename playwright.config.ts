@@ -52,7 +52,7 @@ const config: PlaywrightTestConfig = {
 		['html', {
 			// Output HTML files to test-results-html folder
 			// HTML reporter will clear its output directory prior to being generated,
-			outputFolder: 'html',
+			//outputFolder: 'html',
 			// Never open a server
 			open: 'never',
 		}],
