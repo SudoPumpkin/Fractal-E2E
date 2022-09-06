@@ -18,6 +18,7 @@
   "dependencies": {
     "@chainsafe/dappeteer": "^3.0.0-rc.0",
     "@depay/web3-blockchains": "^6.0.3",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "playwright": "^1.25.1",
     "prettier": "^2.7.1",
     "uuid": "^8.3.2",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@depay/web3-mock": "^13.13.1",
     "@playwright/test": "^1.26.0-alpha-aug-26-2022",
+    "@types/jest": "^29.0.0",
     "@types/node": "^16.11.36",
     "@types/uuid": "^8.3.4",
     "eslint": "^8.19.0",
