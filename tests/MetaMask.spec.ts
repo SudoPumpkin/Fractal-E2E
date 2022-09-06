@@ -22,7 +22,7 @@ const test = base.extend({
       }
     }
     const context = await browserTypes[browserName].launchPersistentContext(
-      'person 1', ///tmp/test-user-data-dir
+      '../person 1', ///tmp/test-user-data-dir
       launchOptions
     )
     await use(context)
