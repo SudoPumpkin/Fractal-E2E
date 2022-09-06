@@ -1,6 +1,7 @@
-import { delay } from "../e2e/helpers.spec";
+import { delay, metamask, login } from "../e2e/helpers.spec";
+import { Browser, BrowserContext, Page } from '@playwright/test';
 
-const { test: base, chromium, webkit } = require('@playwright/test')
+const { test: base, chromium, webkit, expect } = require('@playwright/test')
 const path = require('path')
 
 const extensionPath = path.join(__dirname, '../metamask') // make sure this is correct
@@ -9,19 +10,19 @@ const test = base.extend({
   context: async ({ browserName }, use) => {
     const browserTypes = { chromium, webkit }
     const launchOptions = {
-      devtools: true,
+      devtools: false,
       headless: false,
       args: [
        `--disable-extensions-except=${extensionPath}`,
-       `--load-extension=${extensionPath}`
+       //`--load-extension=${extensionPath}`
       ],
       viewport: {
-        width: 800,
-        height: 600
+        width: 1000,
+        height: 800
       }
     }
     const context = await browserTypes[browserName].launchPersistentContext(
-      '/tmp/test-user-data-dir',
+      'person 1', ///tmp/test-user-data-dir
       launchOptions
     )
     await use(context)
@@ -29,15 +30,25 @@ const test = base.extend({
   }
 });
 
-test.describe('Popup', () => {
-    test('our extension loads', async ({ page }) => {
-      //await page.pause(); //this is here to stop the test to confirm local extensions are present with the correct browser 
-      //await page.delay(4000);
-      await page.goto(
-        'https://google.com',
-      )
+test.describe('Connect Wallet', () => {
+    test('Login MetaMask', async ({ page, browser }) => {
+      // let browser: Browser;
+      // let context: BrowserContext;
+      await delay(2000);
       await page.reload();
-      await page.waitForTimeout(30000); // this is here so that it won't automatically close the browser window
-
-    })
-  })
+      await page.goto(
+       'chrome-extension://daackfnalkpkoipabdoioillppgeekja/popup.html');  
+      await page.locator('input[type="password"]').click();
+      await page.locator('input[type="password"]').fill('Aut0mati0n_2022!');
+      await page.locator('button:has-text("Unlock")').click();
+      await page.goto('https://app.dev.fractalframework.xyz/');
+      // Click button:has-text("Connect Wallet")
+      await page.locator('button:has-text("Connect Wallet")').click();
+      // Click button[role="menuitem"]:has-text("Connect Wallet")
+      await page.locator('button[role="menuitem"]:has-text("Connect Wallet")').click();
+      // Click text=MetaMaskConnect to your MetaMask Wallet
+      await page.locator('text=MetaMaskConnect to your MetaMask Wallet').click();
+    //await page.pause();
+        //await browser.close();
+    });
+});
