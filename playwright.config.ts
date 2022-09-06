@@ -30,12 +30,16 @@ const config: PlaywrightTestConfig = {
 		actionTimeout: 25000,
 		ignoreHTTPSErrors: true,
 		//contextOptions: { recordHar: { path: './har_files/entiresuite.har' }},
-		video: 'on',
 		screenshot: 'on',
 		launchOptions: {
 			slowMo: 100,
 		},
+    video: 'on',
+    contextOptions: {
+      recordVideo: {
+        dir: './playwright-report' }// Or wherever you want the videos to be saved.
 	},
+},
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -46,7 +50,7 @@ const config: PlaywrightTestConfig = {
   // workers: process.env.CI ? 1 : undefined,
   // /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-		// List reporter for getting updates as they run to STDOut
+		// List reporter for getting updates
 		['list'],
 		// HTML output because it's pretty
 		['html', {
@@ -56,8 +60,8 @@ const config: PlaywrightTestConfig = {
 			// Never open a server
 			open: 'never',
 		}],
-		// JSON output required for Bolt notification
-		['json', { outputFile: 'test-results/results.json' }],
+		// JSON output
+		//['json', { outputFile: 'test-results/results.json' }],
 	],
   // /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   // use: {
@@ -143,5 +147,6 @@ const config: PlaywrightTestConfig = {
   //   port: 3000,
   // },
 };
+
 
 export default config;
