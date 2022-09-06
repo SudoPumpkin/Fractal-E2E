@@ -7,3 +7,5 @@ node_modules/
 /*.png
 /html/*
 .DS_Store
+/recordings
+
