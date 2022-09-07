@@ -25,10 +25,9 @@ const test = base.extend({
       'TestProfile', ///tmp/test-user-data-dir
       launchOptions
     )
-    const page = await context.newPage();
     await use(context)
     await context.close()
-  }
+  },
 });
 
 test.describe('Connect Wallet', () => {
@@ -39,7 +38,7 @@ test.describe('Connect Wallet', () => {
       await delay(5000);
       await page.reload();
       // << new
-      await page.goto('chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#initialize/welcome');
+      await page.goto('chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/popup.html');
       await page.click('.button btn--rounded btn-primary first-time-flow__button');
      // await page.keyboard.press('Control+3');
       //await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
