@@ -38,7 +38,9 @@ test.describe('Connect Wallet', () => {
      const page = await context.newPage();
       await delay(5000);
       await page.reload();
-      await page.keyboard.press('Control+3');
+     // await page.keyboard.press('Control+3');
+     await page.goto('https://google.com');
+     await page.reload();
       await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
       await page.reload();
       // Click text=Import wallet
