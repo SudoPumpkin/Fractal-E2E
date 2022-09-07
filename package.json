@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SudoPumpkin/Fractal-E2E.git"
