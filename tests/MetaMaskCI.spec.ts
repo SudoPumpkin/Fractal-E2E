@@ -38,18 +38,22 @@ test.describe('Connect Wallet', () => {
      const page = await context.newPage();
       await delay(5000);
       await page.reload();
+      // << new
+      await page.goto('chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#initialize/welcome');
+      await page.click('.button btn--rounded btn-primary first-time-flow__button');
      // await page.keyboard.press('Control+3');
-     await page.goto('https://google.com');
-     await page.reload();
-      await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
-      await page.reload();
+      //await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
+     // await page.reload();
       // Click text=Import wallet
-      await page.locator('text=Import wallet').click();
+     // await page.locator('text=Import wallet').click();
       await page.waitForURL('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/metametrics-opt-in');
       //await page.pause();
       await page.reload();
+      await page.click('text=I Agree');
+      await page.reload();
+      await page.locator('text=Import wallet').click();
       // Click [data-testid="page-container-footer-next"]
-      await page.locator('[data-testid="page-container-footer-next"]').click();
+     // await page.locator('[data-testid="page-container-footer-next"]').click();
       await page.waitForURL('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/create-password/import-with-seed-phrase');
 
         // Click [placeholder="Paste Secret Recovery Phrase from clipboard"]
