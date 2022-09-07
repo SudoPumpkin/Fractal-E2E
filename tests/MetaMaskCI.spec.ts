@@ -95,7 +95,7 @@ test.describe('Connect Wallet', () => {
   //button[role="menuitem"]:has-text("Connect Wallet
  // await page.pause();
   // Go to another tab
-  
+  // something
   //await page.keyboard.press('Control+Tab');
   //const context = await browser.newContext();
 // const page4 = await context.newPage();
