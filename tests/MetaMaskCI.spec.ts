@@ -25,6 +25,7 @@ const test = base.extend({
       'TestProfile', ///tmp/test-user-data-dir
       launchOptions
     )
+    const page = await context.newPage();
     await use(context)
     await context.close()
   }
@@ -37,7 +38,7 @@ test.describe('Connect Wallet', () => {
      const page = await context.newPage();
       await delay(5000);
       await page.reload();
-      //await page.keyboard.press('Control+2');
+      await page.keyboard.press('Control+Tab');
       await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
       await page.reload();
       // Click text=Import wallet
