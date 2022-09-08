@@ -26,8 +26,11 @@ export const test = base.extend({
       'TestProfile1', ///tmp/test-user-data-dir
       launchOptions
     )
+    // uses existing tab instead of opening another one when the test starts
+    const backgroundPage = context.pages()[0];
+    await backgroundPage.close()
     await use(context)
-    const pageOne = await context.newPage();
+    //const pageOne = await context.newPage();
     await context.close()
   }
 });
@@ -38,7 +41,7 @@ test.describe('Connect Wallet', () => {
       // let context: BrowserContext;
      const page = await context.newPage({
       recordVideo: {
-        dir: "./playwright-report"
+        dir: "../playwright-report"
       }
     });
       await delay(5000);
