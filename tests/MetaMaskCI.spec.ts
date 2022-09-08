@@ -1,17 +1,18 @@
 import { delay } from "../e2e/helpers.spec";
 //import { Browser, BrowserContext, Page } from '@playwright/test';
 
-const { test: base, chromium, webkit, expect } = require('@playwright/test')
+const { test: base, chromium, webkit, expect, page } = require('@playwright/test')
 const path = require('path')
 
 const extensionPath = path.join(__dirname, '../metamask') // make sure this is correct
 
-const test = base.extend({
+export const test = base.extend({
   context: async ({ browserName }, use) => {
     const browserTypes = { chromium, webkit }
     const launchOptions = {
       devtools: false,
       headless: false,
+      javaScriptEnabled: true,
       args: [
        `--disable-extensions-except=${extensionPath}`,
        `--load-extension=${extensionPath}`
@@ -22,10 +23,11 @@ const test = base.extend({
       }
     }
     const context = await browserTypes[browserName].launchPersistentContext(
-      'TestProfile', ///tmp/test-user-data-dir
+      'TestProfile1', ///tmp/test-user-data-dir
       launchOptions
     )
     await use(context)
+    const pageOne = await context.newPage();
     await context.close()
   }
 });
@@ -34,9 +36,14 @@ test.describe('Connect Wallet', () => {
     test('Login MetaMask', async ({ browser, context }) => {
       // let browser: Browser;
       // let context: BrowserContext;
-     const page = await context.newPage();
+     const page = await context.newPage({
+      recordVideo: {
+        dir: "./playwright-report"
+      }
+    });
       await delay(5000);
       await page.reload();
+      //await delay(10000);
       //await page.keyboard.press('Control+Tab');
       await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
       await page.reload();
@@ -98,6 +105,7 @@ test.describe('Connect Wallet', () => {
     //await page.pause();
     // Click 'Connect' - I know it's an ugly selector but it's hidden deep within the html =/
     await popup.click('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]');
+    await browser.close();
 
     });
 });
