@@ -39,11 +39,6 @@ test.describe('Connect Wallet', () => {
     test('Login MetaMask', async ({ browser, context }) => {
       // let browser: Browser;
       // let context: BrowserContext;
-     const page = await context.newPage({
-      recordVideo: {
-        dir: "../playwright-report"
-      }
-    });
       await delay(5000);
       await page.reload();
       //await delay(10000);
