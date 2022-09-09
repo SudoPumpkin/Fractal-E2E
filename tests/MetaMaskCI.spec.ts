@@ -18,7 +18,7 @@ export const test = base.extend({
        `--load-extension=${extensionPath}`
       ],
       viewport: {
-        width: 1200,
+        width: 1000,
         height: 800
       }
     }
@@ -26,7 +26,7 @@ export const test = base.extend({
       'TestProfile1', ///tmp/test-user-data-dir
       launchOptions
     )
-    // uses existing tab instead of opening another one when the test starts
+    // uses existing tab instead of opening another one when the
     const backgroundPage = context.pages()[0];
     await backgroundPage.close()
     await use(context)
@@ -39,8 +39,13 @@ test.describe('Connect Wallet', () => {
     test('Login MetaMask', async ({ browser, context }) => {
       // let browser: Browser;
       // let context: BrowserContext;
+     const page = await context.newPage({
+      recordVideo: {
+        dir: "../playwright-report"
+      }
+    });
       await delay(5000);
-      //await page.reload();
+      await page.reload();
       //await delay(10000);
       //await page.keyboard.press('Control+Tab');
       await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
