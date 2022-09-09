@@ -40,7 +40,7 @@ test.describe('Connect Wallet', () => {
       // let browser: Browser;
       // let context: BrowserContext;
       await delay(5000);
-      await page.reload();
+      //await page.reload();
       //await delay(10000);
       //await page.keyboard.press('Control+Tab');
       await page.goto('chrome-extension://daackfnalkpkoipabdoioillppgeekja/home.html#initialize/select-action');
