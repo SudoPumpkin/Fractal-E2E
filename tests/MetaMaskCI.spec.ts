@@ -28,7 +28,7 @@ export const test = base.extend({
     )
     // uses existing tab instead of opening another one when the
     const backgroundPage = context.pages()[0];
-    await backgroundPage.close()
+    //await backgroundPage.close()
     await use(context)
     //const pageOne = await context.newPage();
     await context.close()
