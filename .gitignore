@@ -8,4 +8,7 @@ node_modules/
 /html/*
 .DS_Store
 /recordings
+metamask-firefox-10.18.4
+metamask-chrome-10.18.4
+playwright-report/*
 
